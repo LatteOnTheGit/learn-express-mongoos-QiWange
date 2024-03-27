@@ -7,6 +7,11 @@ function getAuthor(family_name, first_name) {
 }
 
 function getGenre(name) {
+  // add input santinization
+  if (!name || typeof name !== 'string' || name.length === 0) {
+    return null;
+  }
+  name.replace([/^\s+/g, ''], '');
   return Genre.find({name: name});
 }
 
